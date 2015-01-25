@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCipher", "SwitchCipher\SwitchCipher.csproj", "{DFFC84F5-C36E-4B2F-8312-54F3E14D853B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciphers", "SwitchCipher\Ciphers.csproj", "{DFFC84F5-C36E-4B2F-8312-54F3E14D853B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCipherTest", "SwitchCipherTest\SwitchCipherTest.csproj", "{4360C752-46FB-45AF-9CAB-2DCBE6712E7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiphersTest", "SwitchCipherTest\CiphersTest.csproj", "{4360C752-46FB-45AF-9CAB-2DCBE6712E7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{286E5F38-8D3F-47D4-A920-AC0041E13318}"
 EndProject

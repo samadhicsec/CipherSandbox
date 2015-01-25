@@ -7,8 +7,8 @@
     <ProjectGuid>{4360C752-46FB-45AF-9CAB-2DCBE6712E7D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SwitchCipherTest</RootNamespace>
-    <AssemblyName>SwitchCipherTest</AssemblyName>
+    <RootNamespace>CiphersTest</RootNamespace>
+    <AssemblyName>CiphersTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,9 +48,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwitchCipher\SwitchCipher.csproj">
+    <ProjectReference Include="..\SwitchCipher\Ciphers.csproj">
       <Project>{dffc84f5-c36e-4b2f-8312-54f3e14d853b}</Project>
-      <Name>SwitchCipher</Name>
+      <Name>Ciphers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

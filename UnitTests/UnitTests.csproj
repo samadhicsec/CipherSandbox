@@ -58,14 +58,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomSwapImplTests.cs" />
     <Compile Include="SwitchOAEPTest.cs" />
+    <Compile Include="MACCipherTest.cs" />
+    <Compile Include="GuillotineCipherTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwitchCipher\SwitchCipher.csproj">
+    <ProjectReference Include="..\SwitchCipher\Ciphers.csproj">
       <Project>{dffc84f5-c36e-4b2f-8312-54f3e14d853b}</Project>
-      <Name>SwitchCipher</Name>
+      <Name>Ciphers</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

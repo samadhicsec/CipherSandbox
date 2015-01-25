@@ -7,8 +7,8 @@
     <ProjectGuid>{DFFC84F5-C36E-4B2F-8312-54F3E14D853B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SwitchCipher</RootNamespace>
-    <AssemblyName>SwitchCipher</AssemblyName>
+    <RootNamespace>Ciphers</RootNamespace>
+    <AssemblyName>Ciphers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,12 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuillotineCipher.cs" />
     <Compile Include="IAONT.cs" />
     <Compile Include="IRandomSwap.cs" />
+    <Compile Include="MACCipher.cs" />
     <Compile Include="SwitchCipher.cs" />
     <Compile Include="OEAPEncoding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomSwapImpl.cs" />
+    <Compile Include="Validate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

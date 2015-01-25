@@ -6,58 +6,31 @@ using Ciphers;
 namespace UnitTests
 {
     [TestClass]
-    public class SwitchOAEPTest
+    public class GuillotineCipherTest
     {
         [TestMethod]
-        public void EncryptDecryptEncMsgLength256Test()
-        {
-            IAONT aont = new OAEPEncoding();
-            EncryptDecryptMsgLengthTest(256 - aont.seedSize);
-        }
-
-        [TestMethod]
-        public void EncryptDecryptEncMsgLength257Test()
-        {
-            IAONT aont = new OAEPEncoding();
-            EncryptDecryptMsgLengthTest(257 - aont.seedSize);
-        }
-
-        [TestMethod]
-        public void EncryptDecryptEncMsgLength258Test()
-        {
-            IAONT aont = new OAEPEncoding();
-            EncryptDecryptMsgLengthTest(258 - aont.seedSize);
-        }
-
-        [TestMethod]
-        public void EncryptDecryptMsgLength256Test()
-        {
-            EncryptDecryptMsgLengthTest(256);
-        }
-
-        [TestMethod]
-        public void EncryptDecryptMsgLength1Test()
+        public void GuillotineCipherEncDecMsgLength1Test()
         {
             EncryptDecryptMsgLengthTest(1);
         }
 
         [TestMethod]
-        public void EncryptDecryptMsgLength2Test()
+        public void GuillotineCipherEncDecMsgLength16Test()
         {
-            EncryptDecryptMsgLengthTest(2);
+            EncryptDecryptMsgLengthTest(16);
         }
 
         [TestMethod]
-        public void EncryptDecryptMsgLength3Test()
+        public void GuillotineCipherEncDecMsgLength256Test()
         {
-            EncryptDecryptMsgLengthTest(3);
+            EncryptDecryptMsgLengthTest(256);
         }
 
         private void EncryptDecryptMsgLengthTest(int messageLength)
         {
             // Arrange
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            SwitchOAEP sc = new SwitchOAEP();
+            GuillotineCipher gc = new GuillotineCipher();
 
             byte[] authKey = new byte[16];
             rng.GetBytes(authKey);
@@ -65,7 +38,7 @@ namespace UnitTests
             byte[] message = new byte[messageLength];
             rng.GetBytes(message);
 
-            sc.AuthenticationKey = authKey;
+            gc.Key = authKey;
 
             // Act
             byte[] ciphertext = new byte[0];
@@ -74,9 +47,9 @@ namespace UnitTests
             try
             {
                 // Act
-                ciphertext = sc.CreateEncryptor().TransformFinalBlock(message, 0, message.Length);
-                plaintext = sc.CreateDecryptor().TransformFinalBlock(ciphertext, 0, ciphertext.Length);
-                
+                ciphertext = gc.CreateEncryptor().TransformFinalBlock(message, 0, message.Length);
+                plaintext = gc.CreateDecryptor().TransformFinalBlock(ciphertext, 0, ciphertext.Length);
+
                 // Assert
                 CollectionAssert.AreEqual(message, plaintext,
                     "Message was " + Environment.NewLine + Helper.ByteArrayToString(message) + " (length=" + message.Length + ")" +
@@ -86,7 +59,7 @@ namespace UnitTests
             }
             catch (Exception e)
             {
-                Assert.Fail("Exception: " + e.ToString() + Environment.NewLine + 
+                Assert.Fail("Exception: " + e.ToString() + Environment.NewLine +
                     "Message was " + Environment.NewLine + Helper.ByteArrayToString(message) + " (length=" + message.Length + ")" +
                     Environment.NewLine + "Ciphertext was " + Environment.NewLine + Helper.ByteArrayToString(ciphertext) + " (length=" + ciphertext.Length + ")" +
                     Environment.NewLine + "Plantext was" + Environment.NewLine + Helper.ByteArrayToString(plaintext) + " (length=" + plaintext.Length + ")");

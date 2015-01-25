@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwitchCipher
+namespace Ciphers
 {
     /*
      * Defines the interface for an All Or Nothing Transform (AONT) encoding 
@@ -13,7 +13,13 @@ namespace SwitchCipher
     {
         byte[] Encode(byte[] message);
 
+        byte[] Encode(byte[] message, int messageOffset, int messageCount);
+
         byte[] Decode(byte[] encodedMessage);
+
+        byte[] Decode(byte[] encodedMessage, int encodedMessageOffset, int encodedMessageCount);
+
+        byte[] Seed { get; set; }
 
         int seedSize { get;  set; }
 

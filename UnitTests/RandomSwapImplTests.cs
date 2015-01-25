@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Security.Cryptography;
-using SwitchCipher;
+using Ciphers;
 using NSubstitute;
 
 namespace UnitTests
