@@ -65,6 +65,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ciphers\Ciphers.csproj">
+      <Project>{dffc84f5-c36e-4b2f-8312-54f3e14d853b}</Project>
+      <Name>Ciphers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
