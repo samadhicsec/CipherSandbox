@@ -104,30 +104,11 @@ namespace Ciphers
         byte[] ICryptoTransform.TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount)
         {
             #region Validation
-            // Make sure offset and count are positive
-            if (inputOffset < 0)
-            {
-                // TODO
-                throw new Exception("inputOffset < 0");
-            }
-            if (inputCount <= 0)
-            {
-                // TODO
-                throw new Exception("inputCount <= 0");
-            }
-
-            // Make sure we are not trying to read outside the array.  Try to account for overflows as well.
-            if ((inputBuffer.Length < inputOffset + inputCount) ||
-                (inputOffset + inputCount < inputCount) ||
-                (inputOffset + inputCount < inputOffset))
-            {
-                // TODO
-                throw new IndexOutOfRangeException("Would read outside of array");
-            }
+            Validate.AnArray(inputBuffer, inputOffset, inputCount);
 
             // Make sure inputCount does not exceed the max value of mMACindex
             if(inputCount*8 > Byte.MaxValue)
-                throw new Exception("inputCount > " + Byte.MaxValue);
+                throw new ArgumentException("inputCount > " + Byte.MaxValue, "inputCount");
 
             #endregion
             // Allocate space for a buffer to calculate the HMAC on
@@ -242,26 +223,7 @@ namespace Ciphers
         byte[] ICryptoTransform.TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount)
         {
             #region Validation
-            // Make sure offset and count are positive
-            if (inputOffset < 0)
-            {
-                // TODO
-                throw new Exception("inputOffset < 0");
-            }
-            if (inputCount <= 0)
-            {
-                // TODO
-                throw new Exception("inputCount <= 0");
-            }
-
-            // Make sure we are not trying to read outside the array.  Try to account for overflows as well.
-            if ((inputBuffer.Length < inputOffset + inputCount) ||
-                (inputOffset + inputCount < inputCount) ||
-                (inputOffset + inputCount < inputOffset))
-            {
-                // TODO
-                throw new IndexOutOfRangeException("Would read outside of array");
-            }
+            Validate.AnArray(inputBuffer, inputOffset, inputCount);
 
             // Make sure inputCount does not exceed the max value of mMACindex
             if (inputCount * 8 > Byte.MaxValue)

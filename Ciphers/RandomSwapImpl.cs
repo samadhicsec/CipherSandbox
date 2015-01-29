@@ -19,39 +19,35 @@ namespace Ciphers
             moRng = rng;
         }
 
-        public byte[] Swap(byte[] src, int srcOffset, int count)
+        public byte[] Swap(byte[] inputBuffer, int inputOffset, int inputCount)
         {
-            if (count == 0)
+            #region Validate
+            Validate.AnArray(inputBuffer, inputOffset, inputCount);
+            if (inputCount % 2 != 0)
             {
-                // dataPair needs to be > 0 in length
-                // TODO throw
-                throw new Exception("count needs to be greater than 0");
+                // Our data needs to be split in half so it needs to be even in length
+                throw new ArgumentException("inputCount needs to be even", "inputCount");
             }
-            if (count % 2 != 0)
-            {
-                // dataPair needs to be even in length
-                // TODO throw
-                throw new Exception("count needs to be even");
-            }
+            #endregion
 
             byte[] random = new byte[1];
             // We only need 1 bit of randomness, but we generate randomness by the byte
             moRng.GetBytes(random);
 
-            byte[] ret = new byte[count];
+            byte[] ret = new byte[inputCount];
             // Since the random bit is a secret, we want the same operations to occur regardless of value, implying constant time operations, to help
             // avoid any side channel info leaks due to timing.
             if ((random[0] & (byte)0x01) == (byte)0x01)
             {
                 // Swap
-                Buffer.BlockCopy(src, srcOffset, ret, count / 2, count / 2);
-                Buffer.BlockCopy(src, srcOffset + count / 2, ret, 0, count / 2);
+                Buffer.BlockCopy(inputBuffer, inputOffset, ret, inputCount / 2, inputCount / 2);
+                Buffer.BlockCopy(inputBuffer, inputOffset + inputCount / 2, ret, 0, inputCount / 2);
             }
             else
             {
                 // Don't swap
-                Buffer.BlockCopy(src, srcOffset, ret, 0, count / 2);
-                Buffer.BlockCopy(src, srcOffset + count / 2, ret, count / 2, count / 2);
+                Buffer.BlockCopy(inputBuffer, inputOffset, ret, 0, inputCount / 2);
+                Buffer.BlockCopy(inputBuffer, inputOffset + inputCount / 2, ret, inputCount / 2, inputCount / 2);
             }
 
             // Zero out random[0] as it contains sensitive data

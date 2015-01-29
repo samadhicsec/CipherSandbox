@@ -146,33 +146,7 @@ namespace Ciphers
         public byte[] TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount)
         {
             #region Validation
-            // Make sure offset and count are positive
-            if (inputOffset < 0)
-            {
-                // TODO
-                throw new Exception("inputOffset < 0");
-            }
-            if (inputCount < 0)
-            {
-                // TODO
-                throw new Exception("inputCount < 0");
-            }
-
-            // Make sure we are not trying to read outside the array.  Try to account for overflows as well.
-            if ((inputBuffer.Length < inputOffset + inputCount) ||
-                (inputOffset + inputCount < inputCount) ||
-                (inputOffset + inputCount < inputOffset) )
-            {
-                // TODO
-                throw new Exception("would read outside of array");
-            }
-
-            //// Make sure the message is not empty.  If it is return an empty array.
-            //if (inputBuffer.Length < inputOffset + inputCount)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Message was empty");
-            //    return new byte[0];
-            //}
+            Validate.AnArray(inputBuffer, inputOffset, inputCount);
             #endregion
 
             // Set the padding to always be 1 byte
@@ -353,29 +327,7 @@ namespace Ciphers
         public byte[] TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount)
         {
             #region Validation
-            // Make sure offset and count are positive
-            if (inputOffset < 0)
-            {
-                // TODO
-            }
-            if (inputCount < 0)
-            {
-                // TODO
-            }
-
-            // Make sure we are not trying to read outside the array.  Try to account for overflows as well.
-            if ((inputBuffer.Length < inputOffset + inputCount) ||
-                (inputOffset + inputCount < inputCount) ||
-                (inputOffset + inputCount < inputOffset))
-            {
-                // TODO
-            }
-
-            //// Make sure the ciphertext is not empty.  If it is return an empty array.
-            //if (inputBuffer.Length == inputOffset + inputCount)
-            //{
-            //    return new byte[0];
-            //}
+            Validate.AnArray(inputBuffer, inputOffset, inputCount);
             #endregion
 
             // Check the ciphertext is large enough, Encrypt-then-MAC sig + MAC bits + at least 2 * miTotalPairsCount bytes

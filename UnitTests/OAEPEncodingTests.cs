@@ -23,6 +23,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "A 0 length input was allowed")]
         public void TestEncodeLength0()
         {
             // Arrange
@@ -33,7 +34,7 @@ namespace UnitTests
             byte[] encodedMessage = aont.Encode(message);
 
             // Assert
-            Assert.AreEqual<int>(message.Length + aont.seedSize, encodedMessage.Length);
+            //Assert.AreEqual<int>(message.Length + aont.seedSize, encodedMessage.Length);
         }
 
         [TestMethod]

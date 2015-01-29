@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwitchCipher\Ciphers.csproj">
+    <ProjectReference Include="..\Ciphers\Ciphers.csproj">
       <Project>{dffc84f5-c36e-4b2f-8312-54f3e14d853b}</Project>
       <Name>Ciphers</Name>
     </ProjectReference>

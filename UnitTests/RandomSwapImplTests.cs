@@ -10,7 +10,7 @@ namespace UnitTests
     public class RandomSwapImplTests
     {
         [TestMethod]
-        [ExpectedException(typeof(Exception), "A zero length input was allowed")]
+        [ExpectedException(typeof(ArgumentException), "A zero length input was allowed")]
         public void Test0LengthInput()
         {
             // Arrange
@@ -24,7 +24,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Exception), "An odd length input was allowed")]
+        [ExpectedException(typeof(ArgumentException), "An odd length input was allowed")]
         public void TestOddLengthInput()
         {
             // Arrange
